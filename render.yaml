@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: optibet-api
+    env: python
+    region: frankfurt    # le plus proche de l'Afrique de l'Ouest
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn app:app
+    envVars:
+      - key: FOOTBALL_API_KEY
+        sync: false      # à saisir manuellement dans le dashboard Render
+      - key: PYTHON_VERSION
+        value: 3.11.0
